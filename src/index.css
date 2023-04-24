@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.login{
+    @apply bg-gray-800 font-semibold text-gray-100 py-1 px-4 rounded-sm
+}
+
+.active{
+    @apply text-rose-600 font-medium
+}
+
+.title{
+    @apply text-lg font-semibold
+}
+
+
+.btn{
+    @apply w-full border-2 rounded-md flex gap-3 items-center text-center justify-center py-2 px-4 text-xs sm:text-sm  font-medium
+}
+
+.btn-utils{
+    @apply  border-indigo-500 text-indigo-500
+}
