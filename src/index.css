@@ -7,6 +7,10 @@
     @apply bg-gray-800 font-semibold text-gray-100 py-1 px-4 rounded-sm
 }
 
+.logOut{
+    @apply font-semibold text-gray-800 py-1 px-4 rounded-sm border border-gray-900
+}
+
 .active{
     @apply text-rose-600 font-medium
 }

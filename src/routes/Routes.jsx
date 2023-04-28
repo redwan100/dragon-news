@@ -9,6 +9,7 @@ import NewsLayout from "../layout/NewsLayout";
 import LoginLayout from "../layout/LoginLayout";
 import Login from "../pages/login/Login";
 import Register from "../pages/login/Register";
+import PrivetRoute from "../privetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <News />,
+        element: (
+          <PrivetRoute>
+            <News />
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/news/${params.id}`),
       },

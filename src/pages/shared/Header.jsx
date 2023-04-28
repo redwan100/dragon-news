@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from '../../assets/logo.png'
 import moment from 'moment/moment';
 import Marquee from 'react-fast-marquee';
 import Navbar from './Navbar';
 
+
 const Header = () => {
   return (
     <div>
       <div className="py-4 mx-auto text-center my-4 space-y-2                                                                   ">
+       
         <img src={logo} alt="" className="mx-auto" />
         <p className="text-gray-600">Journalism Without Fear or Favour</p>
         <p className="font-medium">{moment().format("dddd, MMMM D, YYYY")}</p>

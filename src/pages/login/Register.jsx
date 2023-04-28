@@ -1,12 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+
+
 
 const Register = () => {
+
+  const {createUser} =useContext(AuthContext);
+
+ const formHandle = (event)=>{
+  event.preventDefault();
+    const form = event.target
+    const username= form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+
+    createUser(email, password)
+    .then(result=>{
+      const createdUser = result.user;
+      form.reset()
+    })
+    .catch(error=>console.log(error))
+    
+ }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white p-8 rounded shadow-md">
         <h2 className="text-center text-2xl font-bold mb-4">Register</h2>
-        <form>
+        <form onSubmit={formHandle}>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
               Name
@@ -16,9 +41,10 @@ const Register = () => {
               type="text"
               name="name"
               id="name"
-              required
+              placeholder="name"
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
               Email
@@ -29,8 +55,24 @@ const Register = () => {
               name="email"
               id="email"
               required
+              placeholder='email'
             />
           </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="photo">
+              Photo
+            </label>
+            <input
+              className="border border-gray-400 p-2 w-full"
+              type="text"
+              name="photo"
+              id="photo"
+             
+              placeholder='photo url'
+            />
+          </div>
+
+
           <div className="mb-6">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
               Password
@@ -40,7 +82,8 @@ const Register = () => {
               type="password"
               name="password"
               id="password"
-              required
+            
+              placeholder='password'
             />
           </div>
           <div className="mb-6">
@@ -53,9 +96,10 @@ const Register = () => {
             <input
               className="border border-gray-400 p-2 w-full"
               type="password"
-              name="confirm-password"
+              name="confirmPassword"
               id="confirm-password"
-              required
+              
+              placeholder='confirm password'
             />
           </div>
           <div className="flex justify-between items-center flex-col">
